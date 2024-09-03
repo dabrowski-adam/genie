@@ -126,8 +126,7 @@ object PositivePair:
         (
             Either.cond(a > 0, a, "a must be positive").toValidated,
             Either.cond(b > 0, b, "b must be positive").toValidated,
-        ).mapN: (a, b) =>
-            new PositivePair(a, b)
+        ).mapN(new PositivePair(_, _))
 
 
 given Arbitrary[PositivePair] = Genie.arbitrary(PositivePair.apply.tupled)
